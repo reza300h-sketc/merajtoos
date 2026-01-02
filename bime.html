@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بیمه‌های طرف قرارداد | معراج توس</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #2563eb;
+    --secondary: #1e3a8a;
+    --bg: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--bg);
+    color: #334155;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* ===== Header ===== */
+header {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+    margin-bottom: -30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+header p {
+    opacity: 0.9;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+/* ===== Sections ===== */
+.section {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.05);
+    padding: 40px;
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.section h2 {
+    color: var(--secondary);
+    margin-bottom: 35px;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.section h2::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to left, var(--primary), transparent);
+}
+
+/* ===== Insurance Grid ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #f1f5f9;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.15);
+    border-color: var(--primary);
+}
+
+.card img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: grayscale(20%);
+    transition: 0.3s;
+}
+
+.card:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.card span {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1e293b;
+}
+
+/* ===== Contact Section بازطراحی شده ===== */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.contact-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-item i {
+    background: #eff6ff;
+    color: var(--primary);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.eitaa { background: #ff8c00; }
+.rubika { background: #9b59b6; }
+.whatsapp { background: #25d366; }
+.social-links a:hover { transform: scale(1.1) rotate(5deg); }
+
+.home-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: var(--primary);
+    padding: 12px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid var(--primary);
+    transition: 0.3s;
+}
+
+.home-link-btn:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width:768px){
+    header { padding: 40px 20px; }
+    header h1 { font-size: 1.8rem; }
+    .contact-wrapper { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>بیمه‌های طرف قرارداد</h1>
+    <p>درمانگاه شبانه‌روزی معراج توس</p>
+</header>
+
+<div class="container">
+
+    <div class="section">
+        <h2><i class="fa-solid fa-shield-halved"></i> بیمه‌های پایه</h2>
+        <div class="grid">
+            <div class="card"><img src="image/tamin.png" alt="تامین اجتماعی"><span>تامین اجتماعی</span></div>
+            <div class="card"><img src="image/salamat.png" alt="سلامت"><span>بیمه سلامت</span></div>
+            <div class="card"><img src="image/mosa.eps" alt="نیروهای مسلح"><span>نیروهای مسلح</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2><i class="fa-solid fa-plus-circle"></i> بیمه‌های تکمیلی</h2>
+        <div class="grid">
+            <div class="card"><img src="image/Insurance3/Insurance/Asia Insurance Logo/Asia.png" alt="آسیا"><span>بیمه آسیا</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Dana Insurance Logo/Dana.png" alt="دانا"><span>بیمه دانا</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Parsian Insurance Logo/Parsian.png" alt="پارسیان"><span>پارسیان</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Ma Insurance Logo/Ma.png" alt="ما"><span>بیمه ما</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Asmari Insurance Logo/Asmari.png" alt="اسماری"><span>بیمه آسماری</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Day Insurance Logo/Day.png" alt="دی"><span>بیمه دی</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Iran Insurance Logo/Iran.png" alt="ایران"><span>بیمه ایران</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Karafarin Insurance Logo/Karafarin.png" alt="کرفران"><span>کارآفرین</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Mellat Insurance Logo/Mellat.png" alt="ملت"><span>بیمه ملت</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Moallem Insurance Logo/Moallem.png" alt="معلم"><span>بیمه معلم</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Sina Insurance Logo/Sina.png" alt="سینا"><span>بیمه سینا</span></div>
+            <div class="card"><img src="image/Insurance3/Insurance/Razi Insurance Logo/Razi.png" alt="رازی"><span>بیمه رازی</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2><i class="fa-solid fa-building-columns"></i> بانک‌ها</h2>
+        <div class="grid">
+            <div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Bank_Saderat_Iran_logo.png/1024px-Bank_Saderat_Iran_logo.png" alt="بانک ملی"><span>بانک ملی</span></div>
+            <div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Bank_Saderat_Iran_logo.svg/800px-Bank_Saderat_Iran_logo.svg.png" alt="بانک صادرات"><span>بانک صادرات</span></div>
+            <div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Bank_Tejarat_Logo.svg/800px-Bank_Tejarat_Logo.svg.png" alt="بانک تجارت"><span>بانک تجارت</span></div>
+        </div>
+    </div>
+
+    <div class="contact-wrapper">
+        <div class="contact-box">
+            <h2 style="font-size: 1.4rem; color: var(--secondary);">ارتباط سریع</h2>
+            <div class="info-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>مشهد - بلوار توس - نبش توس 43 - میدان معراج</p>
+            </div>
+            <div class="info-item">
+                <i class="fa-solid fa-phone"></i>
+                <p>051-36673135</p>
+            </div>
+            <a class="home-link-btn" href="meraj.html">← بازگشت به صفحه اصلی</a>
+        </div>
+        
+        <div class="contact-box">
+            <h2 style="font-size: 1.4rem; color: var(--secondary);">شبکه‌های اجتماعی</h2>
+            <p>ما را در فضای مجازی دنبال کنید:</p>
+            <div class="social-links">
+                <a href="#" class="eitaa"><i class="fa-solid fa-paper-plane"></i></a>
+                <a href="#" class="rubika"><i class="fa-solid fa-gem"></i></a>
+                <a href="#" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer style="text-align: center; padding: 30px; color: #64748b; font-size: 0.9rem;">
+    © 1404 درمانگاه معراج توس - تمامی حقوق محفوظ است
+</footer>
+
+</body>
+</html>

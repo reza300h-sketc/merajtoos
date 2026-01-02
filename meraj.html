@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>درمانگاه معراج توس</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;font-family:'Vazirmatn',tahoma,sans-serif;margin:0;padding:0}
+body{background:#f5f7fa;color:#333}
+
+/* ===== Top Bar ===== */
+.top-info{background:#fff;display:flex;justify-content:space-between;align-items:center;padding:12px 40px;box-shadow:0 2px 8px rgba(0,0,0,.08);flex-wrap:wrap;gap:10px}
+.appointment-btn{background:#2563eb;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600}
+
+/* ===== Header ===== */
+.header-main{background:#f8fafc;padding:20px 40px;border-bottom:1px solid #e5e7eb}
+.logo-area{display:flex;align-items:center;gap:15px}
+.logo-area img{width:70px}
+.logo-text h1{font-size:2.2rem;color:#1e3a8a;font-weight:800}
+
+/* ===== Nav ===== */
+.main-nav{background:#fff;border-bottom:1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000;}
+.main-nav ul{list-style:none;display:flex;justify-content:center;gap:25px;padding:0;margin:0}
+.main-nav li{position:relative}
+.main-nav a{display:block;padding:14px 20px;text-decoration:none;color:#1f2937;font-weight:600;transition:0.3s}
+.main-nav li:hover > a{color:#2563eb}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff; /* رنگ پس‌زمینه سفید برای تمیزی بیشتر */
+    min-width: 160px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    padding: 10px 0; /* فاصله از بالا و پایین */
+}
+
+.submenu li {
+    width: 100%; /* عرض کامل برای زیر هم قرار گرفتن */
+    text-align: right;
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 20px !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    color: #374151 !important;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.submenu li:last-child a {
+    border-bottom: none;
+}
+
+.submenu li a:hover {
+    background: #eff6ff;
+    color: #2563eb !important;
+}
+
+.main-nav li:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ===== Slider ===== */
+.slider{position:relative;height:420px;overflow:hidden;margin:20px;border-radius:20px}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s}
+.slide.active{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slider-text{position:absolute;bottom:40px;right:40px;color:#fff;font-size:2.2rem;font-weight:800;text-shadow:0 4px 10px rgba(0,0,0,.7)}
+
+/* ===== Flip Cards (حفظ شده بدون تغییر) ===== */
+.container{max-width:1100px;margin:auto;padding:50px 20px}
+h2{color:#2563eb;margin-bottom:25px; border-right: 5px solid #2563eb; padding-right: 15px;}
+.flip-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.flip-card{perspective:1200px;height:260px}
+.flip-inner{width:100%;height:100%;position:relative;transition:transform .7s;transform-style:preserve-3d}
+.flip-card:hover .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;width:100%;height:100%;border-radius:18px;backface-visibility:hidden;box-shadow:0 6px 16px rgba(0,0,0,.15);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
+.flip-front{background:#fff}
+.flip-front i{font-size:3rem;color:#2563eb;margin-bottom:15px}
+.flip-back{background:#2563eb;color:#fff;transform:rotateY(180deg);line-height:1.9}
+
+/* ===== Doctors Section ===== */
+.doctor-filters{display:flex;gap:15px;margin-bottom:25px;flex-wrap:wrap}
+.doctor-filters select, .doctor-filters input{padding:12px;border-radius:8px;border:1px solid #ddd;flex:1}
+.table-container{overflow-x:auto;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+table{width:100%;border-collapse:collapse}
+th,td{padding:14px;text-align:center}
+thead{background:#2563eb;color:#fff}
+.btn-book{background:#10b981;color:white;padding:6px 12px;border-radius:6px;font-size:0.85rem}
+
+/* ===== News Section (جدید) ===== */
+.news-card{display:flex;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,0.1);margin-bottom:40px}
+.news-img{flex:1;min-height:250px}
+.news-img img{width:100%;height:100%;object-fit:cover}
+.news-info{flex:1.5;padding:30px;display:flex;flex-direction:column;justify-content:center}
+
+/* ===== Contact Grid (جدید) ===== */
+.contact-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.contact-box{background:#fff;padding:30px;border-radius:20px;box-shadow:0 6px 16px rgba(0,0,0,0.1)}
+.social-links{display:flex;gap:15px;margin-top:20px}
+.social-links a{width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;transition:0.3s}
+.eitaa{background:#e67e22} .rubika{background:#8e44ad} .whatsapp{background:#27ae60}
+
+footer{background:#1f2937;color:#fff;text-align:center;padding:30px;margin-top:40px}
+
+@media(max-width:768px){
+    .flip-cards, .contact-wrapper, .news-card {grid-template-columns:1fr; flex-direction: column;}
+}
+</style>
+</head>
+<body>
+
+<div class="top-info">
+  <span>⏰ همه روزه | شبانه‌روزی</span>
+  <span>📞 051-36673135</span>
+  <a class="appointment-btn" href="https://tebpardaz.ir" target="_blank">نوبت‌دهی آنلاین</a>
+</div>
+
+<div class="header-main">
+  <div class="logo-area">
+    <img src="image/Arm.jpg" alt="لوگو">
+    <div class="logo-text"><h1>درمانگاه معراج توس</h1></div>
+  </div>
+</div>
+
+<nav class="main-nav">
+  <ul>
+    <li><a href="#">صفحه اصلی</a></li>
+   <li title="خدمات درمانگاه">
+    <a href="#">خدمات <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;margin-right:5px"></i></a>
+    <ul class="submenu">
+        <div style="display: flex; flex-direction: column;">
+            <li><a href="#">پزشک عمومی</a></li>
+            <li><a href="#">تخصصی</a></li>
+            <li><a href="#">دندانپزشکی</a></li>
+        </div>
+    </ul>
+</li>
+</li>
+    </li>
+    <li><a href="#">پزشکان</a></li>
+    <li><a href="bime.html" target="_blank">بیمه های طرف قرارداد</a></li>
+    <li><a href="#contact">تماس با ما</a></li>
+  </ul>
+</nav>
+
+<div class="slider">
+  <div class="slide active"><img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3" alt=""></div>
+  <div class="slide"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118" alt=""></div>
+  <div class="slider-text">سلامتی شما، اولویت ماست</div>
+</div>
+
+<section class="container">
+<h2>خدمات درمانگاه</h2>
+<div class="flip-cards">
+  <div class="flip-card"><div class="flip-inner"><div class="flip-front"><i class="fa-solid fa-user-doctor"></i><h3>پزشک متخصص</h3></div><div class="flip-back">ویزیت توسط پزشکان متخصص طبق برنامه هفتگی</div></div></div>
+  <div class="flip-card"><div class="flip-inner"><div class="flip-front"><i class="fa-solid fa-heart-pulse"></i><h3>پزشکی عمومی</h3></div><div class="flip-back">تشخیص و درمان بیماری‌های عمومی</div></div></div>
+  <div class="flip-card"><div class="flip-inner"><div class="flip-front"><i class="fa-solid fa-wave-square"></i><h3>سونوگرافی</h3></div><div class="flip-back">سونوگرافی دقیق با تجهیزات پیشرفته</div></div></div>
+  <div class="flip-card"><div class="flip-inner"><div class="flip-front"><i class="fa-solid fa-x-ray"></i><h3>OPG</h3></div><div class="flip-back">تصویربرداری OPG دندان و فک</div></div></div>
+  <div class="flip-card"><div class="flip-inner"><div class="flip-front"><i class="fa-solid fa-flask-vial"></i><h3>آزمایشگاه</h3></div><div class="flip-back">آزمایش‌های تخصصی و عمومی</div></div></div>
+  <div class="flip-card"><div class="flip-inner"><div class="flip-front"><i class="fa-solid fa-tooth"></i><h3>دندانپزشکی</h3></div><div class="flip-back">خدمات کامل دندانپزشکی</div></div></div>
+</div>
+</section>
+
+<section class="container">
+    <h2>برنامه حضور پزشکان</h2>
+    <div class="doctor-filters">
+        <input type="text" id="searchInput" onkeyup="renderDoctors()" placeholder="جستجوی نام پزشک...">
+        <select id="filter" onchange="renderDoctors()">
+          <option value="all">همه تخصص‌ها</option>
+          <option value="women">زنان و زایمان</option>
+          <option value="internal">داخلی</option>
+          <option value="heart">قلب و عروق</option>
+        </select>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr><th>نام</th><th>تخصص</th><th>روز</th><th>ساعت</th><th>دریافت نوبت</th></tr>
+            </thead>
+            <tbody id="doctorTable"></tbody>
+        </table>
+    </div>
+</section>
+
+<section class="container">
+    <h2>اخبار و اطلاعیه‌ها</h2>
+    <div class="news-card">
+        <div class="news-img"><img src="https://images.unsplash.com/photo-1576091160550-2173dad99901" alt=""></div>
+        <div class="news-info">
+            <h3>راه‌اندازی سیستم نوبت‌دهی آنلاین</h3>
+            <p>جهت رفاه حال مراجعین محترم، سیستم نوبت‌دهی آنلاین درمانگاه معراج توس فعال شد. از این پس می‌توانید بدون مراجعه حضوری، نوبت خود را رزرو کنید.</p>
+            <a href="#" style="color:#2563eb; font-weight:bold">ادامه مطلب...</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="container">
+    <div class="contact-wrapper">
+        <div class="contact-box">
+            <h2>تماس با ما</h2>
+            <p>📍 مشهد - بلوار توس - نبش توس 43 - میدان معراج</p>
+            <p>📞 051-36673135</p>
+            <iframe src="" width="100%" height="150" loading="lazy" style="border:0; border-radius:15px"></iframe>
+        </div>
+        <div class="contact-box">
+            <h2>ارتباط با ما</h2>
+            <p>ما را در شبکه‌های اجتماعی دنبال کنید:</p>
+            <div class="social-links">
+                <a href="#" class="eitaa" title="ایتا"><i class="fa-solid fa-paper-plane"></i></a>
+                <a href="#" class="rubika" title="روبیکا"><i class="fa-solid fa-gem"></i></a>
+                <a href="#" class="whatsapp" title="واتساپ"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <p style="margin-top:20px; font-size:0.9rem; color:#666">پاسخگویی سریع در پیام‌رسان‌ها</p>
+        </div>
+    </div>
+</section>
+
+<footer>© 2025 درمانگاه معراج توس</footer>
+
+<script>
+/* Slider */
+let slides=document.querySelectorAll('.slide');
+let index=0;
+setInterval(()=>{
+  slides[index].classList.remove('active');
+  index=(index+1)%slides.length;
+  slides[index].classList.add('active');
+},4000);
+
+/* Doctors Data */
+const doctors = [
+  {name:"دکتر زجاجی",spec:"women",fa:"زنان و زایمان",day:"یکشنبه",time:"16:00 - 18:00"},
+  {name:"دکتر تقی پور",spec:"internal",fa:"داخلی",day:"دوشنبه",time:"11:00 - 12:30"},
+  {name:"دکتر پوراحمدی",spec:"heart",fa:"قلب و عروق",day:"یکشنبه",time:"11:00 - 12:00"}
+];
+
+function renderDoctors(){
+  let f = document.getElementById("filter").value;
+  let s = document.getElementById("searchInput").value.toLowerCase();
+  let t = document.getElementById("doctorTable");
+  t.innerHTML = "";
+  doctors.filter(d => (f === "all" || d.spec === f) && (d.name.toLowerCase().includes(s)))
+    .forEach(d => {
+      t.innerHTML += `<tr><td>${d.name}</td><td>${d.fa}</td><td>${d.day}</td><td>${d.time}</td><td><a href="#" class="btn-book">دریافت نوبت</a></td></tr>`;
+    });
+}
+renderDoctors();
+</script>
+
+</body>
+</html>
